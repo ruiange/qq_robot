@@ -15,10 +15,8 @@ const url = 'https://bots.qq.com/app/getAppAccessToken'
 /*获取调用凭证*/
 const getAppAccessToken = async () => {
     try {
-
-
         // 判断是否过期
-        if (dayjs(tokenInfo.maturityTime).isBefore(dayjs())) {
+        if (tokenInfo.expireTime > new Date().getTime()) {
             console.warn('token未过期')
             return tokenInfo.accessToken
         }
