@@ -42,7 +42,7 @@ const getAppAccessToken = async () => {
             expireTime,
             maturityTime: dayjs(maturityTime).format('YYYY-MM-DD HH:mm:ss')
         }
-        fs.writeFileSync(filePath, JSON.stringify(tokenInfo))
+
         return accessToken
     } catch (e) {
         console.error('获取access_token失败')
