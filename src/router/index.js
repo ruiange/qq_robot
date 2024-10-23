@@ -4,7 +4,7 @@ import express from 'express';
 const router = express.Router();
 
 router.get('/', (req, res) => {
-    res.send('Hello World!');
+    res.send('我真的太想进步了~！');
 });
 
 export default router;
