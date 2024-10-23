@@ -3,8 +3,12 @@ import router from "./router/index.js";
 import dotenv from "dotenv";
 // 加载.env文件中的环境变量
 dotenv.config();
+
+
 const app = express();
+app.use(express.json());
 app.use(router);
+
 const port = 3001;
 
 
