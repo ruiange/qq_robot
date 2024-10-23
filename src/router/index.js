@@ -13,6 +13,8 @@ router.get('/', async (req, res) => {
 });
 router.post('/', async (req, res) => {
     console.log('访问方式：post')
+    const body = req.body;
+    console.log(body);
     res.send('test');
 });
 
