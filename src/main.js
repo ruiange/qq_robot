@@ -21,13 +21,12 @@ client.on('at.message.create', async event => {
 
 // 监听群聊消息
 client.on('group.at.message.create', async event => {
-    console.log(event);
-    console.warn('有人来了')
+
 
 
 
     const content = event.content.trim()
-    console.warn(content)
+
 
 
 
@@ -36,12 +35,12 @@ client.on('group.at.message.create', async event => {
         return
     }
     
-    aiReply(client,event)
+    //aiReply(client,event)
 
     await client.api.sendGroupMessage(event.group_openid, {
-        msg_id: event.id,
+        //msg_id: event.id,
         msg_type: 0,
-        content: 'hello world',
+        content: '你好~',
     });
 });
 

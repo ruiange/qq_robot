@@ -34,12 +34,18 @@ const banUser = async (event) => {
         }
     })
 
-    if (data.code === 200 && data.data.length > 0) {
-       // console.warn('要疯你了' + data.data[0].portrait)
-        //插入数据到数据库
 
+
+    if (data.code === 200 && data.data.length > 0) {
+        if(data.data[0].tieba_uid!==id){
+            await client.api.sendGroupMessage(event.group_openid, {
+                // msg_id: event.id,
+                msg_type: 0,
+                content: '未查询到此用户,请输入正确ID',
+            });
+            return
+        }
         const userData = {
-            "id": 8,
             "uid": 1,
             "pid": 3,
             "name": data.data[0].name,
@@ -58,13 +64,13 @@ const banUser = async (event) => {
         });
         connection.end();
         await client.api.sendGroupMessage(event.group_openid, {
-            msg_id: event.id,
+           // msg_id: event.id,
             msg_type: 0,
             content: `${data.data[0].name? data.data[0].name:data.data[0].show_name}已添加到小黑屋`,
         });
     } else {
         await client.api.sendGroupMessage(event.group_openid, {
-            msg_id: event.id,
+            //msg_id: event.id,
             msg_type: 0,
             content: '未查询到此用户',
         });
