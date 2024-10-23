@@ -13,9 +13,6 @@ const main = async () => {
         token: process.env.TOKEN,
         secret: process.env.SECRET,
 
-        // appid: '102088032',
-        // token: 'iIP9AiUZTtEp7Q2QbkxNXboTvjSxOdnY',
-        // secret: 'rGf4TsIi8YyOoEf6XyPqHjBd5XzRtMpI',
         events: ['GROUP_AND_C2C_EVENT', 'PUBLIC_GUILD_MESSAGES'],
         sandbox: false,
         log_level: ' ALL'
