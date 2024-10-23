@@ -7,9 +7,11 @@ const client = new Client({
     token: 'ESP1oIQd87Bca89hjvbiN6Nfku0RVIu8',
     secret: '92vohaTMGA4ysmgaVQLGB61xtplhdZVS',
     events: ['GROUP_AND_C2C_EVENT', 'PUBLIC_GUILD_MESSAGES'],
-    sandbox: true,
+    sandbox: false,
     log_level: 'OFF'
 });
+
+
 
 // 监听频道消息
 client.on('at.message.create', async event => {
@@ -35,7 +37,7 @@ client.on('group.at.message.create', async event => {
         Instruction(client,event)
         return
     }
-    
+
     aiReply(client,event)
 
     await client.api.sendGroupMessage(event.group_openid, {
