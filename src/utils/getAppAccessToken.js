@@ -18,7 +18,7 @@ const getAppAccessToken = async () => {
 
 
         // 判断是否过期
-        if (!dayjs(tokenInfo.maturityTime).isBefore(dayjs())) {
+        if (dayjs(tokenInfo.maturityTime).isBefore(dayjs())) {
             console.warn('token未过期')
             return tokenInfo.accessToken
         }
