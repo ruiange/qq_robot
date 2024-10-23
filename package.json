@@ -1,0 +1,16 @@
+{
+  "name": "qq_robot",
+  "version": "1.0.0",
+  "description": "QQ机器人",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "dev:server": "nodemon src/app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.1"
+  }
+}
