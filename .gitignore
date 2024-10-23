@@ -1,3 +1,8 @@
 node_modules/
 .idea/
 
+.env.local
+.env
+.env.test
+.env.production
+.env.development
