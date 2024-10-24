@@ -2,6 +2,7 @@ import express from 'express';
 import router from "./router/index.js";
 import dotenv from "dotenv";
 import client from "./main.js";
+import main from "./main.js";
 // 加载.env文件中的环境变量
 dotenv.config();
 
@@ -15,7 +16,7 @@ const port = 3001;
 
 app.listen(port, async () => {
   console.log(`http://localhost:${port}`);
-  await client.online()
+  await main()
 });
 
 export default app;
