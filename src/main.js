@@ -2,6 +2,7 @@
 import {Client} from 'amesu'
 import Instruction from "./plugin/Instruction.js";
 import aiReply from "./ai/aiReply.js";
+import AiReply from "./ai/aiReply.js";
 
 
 
@@ -18,7 +19,7 @@ const main = async () => {
         log_level: ' ALL'
     });
 
-
+//console.warn(client.api)
 
     // 监听频道消息
     client.on('at.message.create', async event => {
@@ -44,22 +45,28 @@ const main = async () => {
             return
         }
 
-        //aiReply(client,event)
+        console.warn(event)
 
+        const msg = await AiReply(event.author.union_openid, event.content)
         await client.api.sendGroupMessage(event.group_openid, {
             msg_id: event.id,
             msg_type: 0,
-            content: '你好~',
+            content: msg,
         });
     });
 
     // 监听私聊消息
     client.on('c2c.message.create', async (event) => {
         console.log('私聊来了'+event.content)
+
+
+
+
+        const msg = await AiReply(event.author.user_openid, event.content)
         await client.api.sendUserMessage(event.author.user_openid, {
             msg_id: event.id,
             msg_type: 0,
-            content: '你好~',
+            content: msg,
         });
 
     });

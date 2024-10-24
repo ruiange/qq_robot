@@ -22,16 +22,20 @@ const queryList = async (client,event) => {
                client.api.sendGroupMessage(event.group_openid, {
                    msg_id: event.id,
                    msg_type: 0,
-                   content: '小黑屋为空',
+                   content: '\n小黑屋为空;',
                });
            }else{
+               let msg = `\n小黑屋里有${results.length}个坏🥚\n============\n\n`
                for (let i = 0; i < results.length; i++) {
-                   client.api.sendGroupMessage(event.group_openid, {
-                       msg_id: event.id,
-                       msg_type: 0,
-                       content: `${results[i].name}`,
-                   });
+                   msg += `${i+1}.${results[i].name}\n`
                }
+
+
+               client.api.sendGroupMessage(event.group_openid, {
+                   msg_id: event.id,
+                   msg_type: 0,
+                   content: msg,
+               });
            }
 
        });
